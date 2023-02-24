@@ -22,6 +22,8 @@
     "chokidar": "^3.5.3",
     "electron": "^22.0.2",
     "electron-builder": "^23.6.0",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
     "typescript": "^4.8.4",
     "vite": "^4.0.4"
   },

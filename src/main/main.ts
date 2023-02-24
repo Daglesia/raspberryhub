@@ -11,13 +11,18 @@ function createWindow () {
       contextIsolation: true,
     }
   });
+  //mainWindow.removeMenu();
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  });
+  mainWindow.setBackgroundColor('#2D0000')
 
   if (process.env.NODE_ENV === 'development') {
     const rendererPort = process.argv[2];
     mainWindow.loadURL(`http://localhost:${rendererPort}`);
   }
   else {
-    mainWindow.loadFile(join(app.getAppPath(), 'renderer', 'index.html'));
+    mainWindow.loadFile(join(app.getAppPath(), 'Raspberry Hub', 'index.html'));
   }
 }
 

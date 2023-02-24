@@ -1,0 +1,31 @@
+:root {
+    font-family: 'A-OTF Shin Go Pro M';
+
+    --font-button: 'A-OTF Shin Go Pro M';
+
+    --color-primary: #4A0001;
+    --color-secondary: #005555;
+    --color-accent: #FFF0D3;
+
+    --color-shadow: #002222;
+}
+
+html, body, #app {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'A-OTF Shin Go Pro R';
+    font-style: normal;
+    font-weight: normal;
+    src: local('A-OTF Shin Go Pro R'), url('AOTFShinGoProRegular.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'A-OTF Shin Go Pro M';
+    font-style: normal;
+    font-weight: normal;
+    src: local('A-OTF Shin Go Pro M'), url('AOTFShinGoProMedium.woff') format('woff');
+  }
