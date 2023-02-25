@@ -1,0 +1,22 @@
+@use 'transitions';
+
+%basic-button {
+    cursor: pointer;
+}
+
+.menu-button {
+    @include transitions.bubbly-button;
+    @extend %basic-button;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    background-color: var(--color-secondary);
+    color: var(--color-accent);
+
+    font-family: var(--font-button);
+    text-shadow: 2px 2px 4px var(--color-secondary);
+    font-size: 1.5em;
+    box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
+    -webkit-box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
+    -moz-box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
+}
