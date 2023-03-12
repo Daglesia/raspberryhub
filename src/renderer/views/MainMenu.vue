@@ -1,9 +1,9 @@
 <template>
     <div class="menu">
         <div class="menu-row" v-for="labelRow in labelsSplit">
-            <menu-button v-for="label in labelRow" :key="label" :label="label" />
+            <router-link to="/scanner">ssss</router-link>
+            <menu-button v-for="label in labelRow" :key="label" :label="label"/>
         </div>
-        <hello/>
 </div>
 <div class="footer">
     <logo-icon />
@@ -11,9 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import Hello from "./Hello.vue"
 import LogoIcon from '../icons/LogoIcon.vue';
-import MenuButton from './MenuButton.vue';
+import MenuButton from '../components/MenuButton.vue';
 
 import { splitArrayToChunks } from "../utils/utils"
 

@@ -6,6 +6,8 @@ window.electronAPI.sendMessage('Hello from App.vue!');
 
 <template>
   <div id="app">
-    <main-menu/>
+    <router-view>
+
+    </router-view>
   </div>
 </template>
