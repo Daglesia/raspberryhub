@@ -1,34 +1,19 @@
 @use 'transitions';
 
-%basic-button {
+%button-basic {
     cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-%fancy-button {
-    @include transitions.bubbly-button;
-    @extend %basic-button;
-    background-color: var(--color-secondary);
-    color: var(--color-accent);
-
-    font-family: var(--font-button);
-    text-shadow: 2px 2px 4px var(--color-secondary);
-    box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
-    -webkit-box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
-    -moz-box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
+%button-primary {
+    box-sizing: border-box;
+    border-radius: 75vmax;
+    background: var(--color-primary);
+    border: 3px solid var(--color-primary-alt);
 }
 
 .menu-button {
-    @extend %fancy-button;
+    @extend %button-basic, %button-primary;
+    aspect-ratio: 80 / 39;
     width: 100%;
-    height: 100%;
-    border-radius: 1em;
-    font-size: 1.5em;
-}
-
-.floating-action-button {
-    @extend %fancy-button;
-    padding: 0.3em;
-    margin: 0.4em;
-    border-radius: 100%;
-    font-size: 1.5em;
 }

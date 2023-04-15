@@ -1,11 +1,11 @@
 :root {
-    font-family: 'A-OTF Shin Go Pro M';
+    font-family: 'Rubik One';
 
-    --font-button: 'A-OTF Shin Go Pro M';
+    --font-button: 'Rubik One';
 
-    --color-primary: #4A0001;
-    --color-secondary: #005555;
-    --color-accent: #FFF0D3;
+    --color-primary: #5A86BF;
+    --color-primary-alt: #668CD9;
+    --color-secondary: #1A1F26;
 
     --color-shadow: #002222;
 }
@@ -18,15 +18,8 @@ html, body, #app {
 }
 
 @font-face {
-    font-family: 'A-OTF Shin Go Pro R';
+    font-family: 'Rubik One';
     font-style: normal;
     font-weight: normal;
-    src: local('A-OTF Shin Go Pro R'), url('AOTFShinGoProRegular.woff') format('woff');
-  }
-  
-  @font-face {
-    font-family: 'A-OTF Shin Go Pro M';
-    font-style: normal;
-    font-weight: normal;
-    src: local('A-OTF Shin Go Pro M'), url('AOTFShinGoProMedium.woff') format('woff');
+    src: local('Rubik One'), url('RubikOne-Regular.ttf');
   }

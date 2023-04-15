@@ -4,7 +4,7 @@ import {join} from 'path';
 function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 480,
     webPreferences: {
       preload: join(__dirname, 'preload.js'),
       nodeIntegration: false,
@@ -15,7 +15,7 @@ function createWindow () {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   });
-  mainWindow.setBackgroundColor('#2D0000')
+  mainWindow.setBackgroundColor('#1A1F26')
 
   if (process.env.NODE_ENV === 'development') {
     const rendererPort = process.argv[2];

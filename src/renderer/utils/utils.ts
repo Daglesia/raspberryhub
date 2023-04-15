@@ -7,3 +7,7 @@ export function splitArrayToChunks<Type>(
       array.push(inputArray.slice(i, i + chunkSize));
     return array;
   }
+
+export function getCurrentDate(): string {
+  return new Date(Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit"});
+}

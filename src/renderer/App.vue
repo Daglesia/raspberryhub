@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainMenu from './components/MainMenu.vue'
+import MainMenu from './views/MainMenu.vue'
 
 window.electronAPI.sendMessage('Hello from App.vue!');
 </script>
