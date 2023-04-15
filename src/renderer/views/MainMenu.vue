@@ -1,30 +1,29 @@
 <template>
     <div class="menu">
         <div v-for="path in paths" :key="path.route">
-            <menu-button>
-                <font-awesome-icon :icon="path.icon" />
+            <menu-button :menuButtonHidden="menuHidden" :route="path.route" @menu-item-clicked="handleMenuItemClick">
+                <font-awesome-icon :icon="path.icon"/>
             </menu-button>
         </div>
     </div>
-    <footer>
-        <span>{{ date }}</span>
-    </footer>
+    <date-corner :hidden="menuHidden"/>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import MenuButton from '../components/MenuButton.vue';
+import DateCorner from '../components/DateCorner.vue';
 
-import { getCurrentDate } from "../utils/utils"
+import router from '../router';
 
-const date = ref(getCurrentDate());
+const menuHidden = ref(false);
 
-onMounted(()=>{
-    setInterval(()=>{
-        date.value = getCurrentDate();
-        console.log('beeep', date.value)
-    }, 1000)
-})
+const handleMenuItemClick = (path:string):void => {
+    menuHidden.value = true;
+    setTimeout(()=>{
+        router.push(path)
+    }, 700)
+}
 
 const paths = [
     {
@@ -49,6 +48,7 @@ const paths = [
 </script>
 
 <style lang="scss" scoped>
+@use '../styles/transitions.scss';
 .menu {
     display: grid;
     grid-template-columns: auto auto;
@@ -67,26 +67,10 @@ svg {
     height: 52%;
 }
 
-footer {
+.date-corner {
     position: absolute;
-    color: var(--color-secondary);
-    background: var(--color-primary);
-
     bottom:0;
     right:0;
-    height: 4rem;
-    aspect-ratio: 50 / 25;
-
-    border-radius: 50px 0 0 0;
-
-    display: flex;
-    align-items: end;
-    justify-content: end;
-}
-span {
-    margin-right: 0.3em;
-    margin-bottom: 0.2em;
-    font-size: 2rem;
 }
 
 </style>

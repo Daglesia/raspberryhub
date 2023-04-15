@@ -1,0 +1,22 @@
+.pan-enter-active,
+.pan-leave-active {
+  transition: all 0.5s ease;
+}
+
+.pan-enter-from,
+.pan-leave-to {
+  transform: scale(0.7);
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: scale(0.7) translateY(30px) translateX(30px);
+  background-color: var(--color-secondary);
+}
