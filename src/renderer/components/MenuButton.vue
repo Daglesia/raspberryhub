@@ -1,6 +1,6 @@
 <template>
   <transition name="pan" appear>
-    <button v-show="!menuButtonHidden" @click="onClick" class="menu-button">
+    <button v-show="!menuButtonHidden" @click="onClick" class="menu-button" :class="{clicked: isClicked}">
         <slot></slot>
     </button>
   </transition>
@@ -8,6 +8,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+
+const isClicked = ref<boolean>(false)
 
 const props = defineProps<{
   route: string,
@@ -20,6 +22,7 @@ const emit = defineEmits<{
 
 const onClick = () => {
     emit('menuItemClicked', props.route);
+    isClicked.value = true;
 }
 </script>
 

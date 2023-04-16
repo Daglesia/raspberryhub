@@ -1,62 +1,40 @@
 <template>
-    <button class="floating-action-button back-button" @click="$router.back()">
-        <logo-icon/>
+    <transition name="slide2" appear>
+    <div v-show="!hidden">
+    <button id="back-button" @click="handleBackButtonClicked">
+        <font-awesome-icon icon="fa-solid fa-home"/>
     </button>
-    <div class="scanner-view">
-        <button class="floating-action-button" @click="omitZeroDecrementIncrement(1)">
-            <font-awesome-icon icon="fa-solid fa-plus"/>
-        </button>
-        <h1>{{ currentCount }}</h1>
-        <button class="floating-action-button" @click="omitZeroDecrementIncrement(-1)">
-            <font-awesome-icon icon="fa-solid fa-minus" />
-        </button>
+    <scanner-component v-model="currentCount" />
+    <scanned-item-list :scannedItems="scannedItems" />
     </div>
-    <div class="itemRows">
-        <transition-group name="flip-list" tag="ul">
-        <div v-for="item in scannedItems" :key="item.id">
-            <li class="itemRow">
-            <p>
-                {{ item.product }}
-            </p>
-            <p class="itemCount">
-                x{{ item.count }}
-            </p>
-                <img :src="getImgUrl(item.src)"/>
-        </li>
-        </div>
-    </transition-group>
-    </div>
-
+</transition>
 </template>
 
 <script setup lang="ts">
 
 import { onDeactivated, onMounted, ref } from 'vue';
-import LogoIcon from '../icons/LogoIcon.vue';
+import ScannedItemList from '../components/ScannedItemList.vue'
+import ScannerComponent from '../components/ScannerComponent.vue';
+import router from '../router';
+import { ScannedItem } from '../typings/scanner';
 
-import { splitArrayToChunks } from "../utils/utils";
-
-const getImgUrl = (filename: string): string => {
-    return `http://127.0.0.1:8000/static/${filename}.jpg`
-}
-
-const omitZeroDecrementIncrement = (sign: number): void => {
-    currentCount.value = currentCount.value + sign;
-    if(!currentCount.value) {
-        currentCount.value = currentCount.value + sign;
-    }
-}
-
-interface ScannedItem {
-    product: string;
-    id: number;
-    src: string;
-    count: number;
-}
-
-const scannedItems = ref<ScannedItem[]>([]);
+const hidden = ref(false);
 
 const currentCount = ref(1);
+
+const handleBackButtonClicked = ():void => {
+    hidden.value = true;
+    setTimeout(()=>{
+        router.back();
+    }, 700)
+}
+
+const scannedItems = ref<ScannedItem[]>([{
+    product: "E.Leclerc Rzeszów - Hipermarket | Napoje | Cisowianka Naturalna ...",
+    src: "5902078000201",
+    count: 1,
+    id: 1,
+}]);
 
 let connection: WebSocket;
 
@@ -96,100 +74,29 @@ onDeactivated(() => {
     window.removeEventListener('keypress', scanItem);
 })
 
-const labels = [
-    "Scanner"
-]
-
-const labelsSplit = splitArrayToChunks(labels, 2);
-
 </script>
 
 <style lang="scss" scoped>
+@use '../styles/transitions.scss';
 @use '../styles/buttons.scss';
 
-.floating-action-button {
-    width:3em;
-    height:3em;
-}
-
-h1 {
-    color: var(--color-accent);
-    height: 3em;
-    width: 3em;
-    text-align: center;
-    margin-top: 1.3em;
-}
-
-.itemRows {
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-
-    justify-content: flex-end;
-}
-svg {
-    display: block;
-    margin: auto;
-}
-.itemRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 1%;
-    box-shadow: inset 0px 0px 100px -34px var(--color-shadow);
-    background-color: var(--color-secondary);
-    color: var(--color-accent);
-    border-radius: 10em;
-
-    transition: all 1s;
-}
-ul {
-    padding:0;
-    width: 100%;
-}
-
-img {
-    width: 5em;
-    height: 5em;
-    border-radius: 10em;
-    margin: 0.2em;
-    box-shadow: 0 1px 2.5px var(--color-accent), inset 0px 0px 100px -34px var(--color-shadow);
-}
-
-p {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 1em;
-}
-
-.itemCount {
-    margin-left: auto;
-    margin-right: 0.1em;
-}
-.back-button {
+#back-button {
+    @extend %button-basic;
     position: absolute;
+    top: 1vmax;
+    left: 1vmax;
+
+    background-color: none;
 }
 
-.back-button > svg {
-    width: 2em;
-    height: 2em;
-    margin-top: 0.2em;
+#back-button > svg {
+    height: 5vmax;
+    color: var(--color-secondary);
 }
 
-.scanner-view {
-    height: 40%;
+.scanner-component {
+    height: 33vh;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.flip-list-move {
-  transition: transform 0.6s;
-}
-.flip-list-enter, .flip-list-leave-to {
-  opacity: 0;
 }
 
 </style>

@@ -7,22 +7,26 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onDeactivated, onMounted, ref } from 'vue';
 import { getCurrentDate } from '../utils/utils';
 
 const date = ref(getCurrentDate());
+let timerId: number;
 
 defineProps<{
   hidden: boolean,
 }>()
 
 onMounted(()=>{
-    setInterval(()=>{
+    timerId = setInterval(()=>{
         date.value = getCurrentDate();
-        console.log('beeep', date.value)
+        // todo leak
     }, 1000)
 })
 
+onDeactivated(()=>{
+    clearInterval(timerId);
+})
 
 </script>
 
