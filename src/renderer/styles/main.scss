@@ -1,25 +1,27 @@
 :root {
-    font-family: 'Rubik One';
+  font-family: "Rubik One";
 
-    --font-button: 'Rubik One';
+  --font-button: "Rubik One";
 
-    --color-primary: #5A86BF;
-    --color-primary-alt: #668CD9;
-    --color-secondary: #1A1F26;
+  --color-primary: #5a86bf;
+  --color-primary-alt: #668cd9;
+  --color-secondary: #1a1f26;
 
-    --color-shadow: #002222;
+  --color-shadow: #002222;
 }
 
-html, body, #app {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    overflow:hidden;
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 @font-face {
-    font-family: 'Rubik One';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Rubik One'), url('RubikOne-Regular.ttf');
-  }
+  font-family: "Rubik One";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Rubik One"), url("RubikOne-Regular.ttf");
+}

@@ -1,76 +1,77 @@
 <template>
-    <div class="menu">
-        <div v-for="path in paths" :key="path.route">
-            <menu-button :menuButtonHidden="menuHidden" :route="path.route" @menu-item-clicked="handleMenuItemClick">
-                <font-awesome-icon :icon="path.icon"/>
-            </menu-button>
-        </div>
+  <div class="menu">
+    <div v-for="path in paths" :key="path.route">
+      <menu-button
+        :menuButtonHidden="menuHidden"
+        :route="path.route"
+        @menu-item-clicked="handleMenuItemClick"
+      >
+        <font-awesome-icon :icon="path.icon" />
+      </menu-button>
     </div>
-    <date-corner :hidden="menuHidden"/>
+  </div>
+  <date-corner :hidden="menuHidden" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import MenuButton from '../components/MenuButton.vue';
-import DateCorner from '../components/DateCorner.vue';
+import { ref } from "vue";
+import MenuButton from "../components/MenuButton.vue";
+import DateCorner from "../components/DateCorner.vue";
 
-import router from '../router';
+import router from "../router";
 
 const menuHidden = ref(false);
 
-const handleMenuItemClick = (path:string):void => {
-    menuHidden.value = true;
-    setTimeout(()=>{
-        router.push(path)
-    }, 700)
-}
+const handleMenuItemClick = (path: string): void => {
+  menuHidden.value = true;
+  setTimeout(() => {
+    router.push(path);
+  }, 700);
+};
 
 const paths = [
-    {
-        icon: 'fa-solid fa-cart-shopping',
-        route: '/scanner'
-    },
-    {
-        icon: 'fa-solid fa-pizza-slice',
-        route: '/recipes'
-    },
-    {
-        icon: 'fa-solid fa-map-location-dot',
-        route: '/locate'
-    },
-    {
-        icon: 'fa-solid fa-clock',
-        route: '/kitchen'
-    }
-]
-
-
+  {
+    icon: "fa-solid fa-cart-shopping",
+    route: "/scanner",
+  },
+  {
+    icon: "fa-solid fa-pizza-slice",
+    route: "/recipes",
+  },
+  {
+    icon: "fa-solid fa-map-location-dot",
+    route: "/locate",
+  },
+  {
+    icon: "fa-solid fa-clock",
+    route: "/kitchen",
+  },
+];
 </script>
 
 <style lang="scss" scoped>
-@use '../styles/transitions.scss';
+@use "../styles/transitions.scss";
 .menu {
-    display: grid;
-    grid-template-columns: auto auto;
+  display: grid;
+  grid-template-columns: auto auto;
 
-    place-content: center stretch;
+  place-content: center stretch;
 
-    height: 100%;
-    width: 60%;
-    margin: auto;
+  height: 100%;
+  width: 60%;
+  margin: auto;
 
-    gap: 2rem;
+  gap: 2rem;
 }
 
 svg {
-    color: var(--color-secondary);
-    height: 52%;
+  color: var(--color-secondary);
+  height: 52%;
 }
 
 .date-corner {
-    position: absolute;
-    bottom:0;
-    right:0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
-
 </style>

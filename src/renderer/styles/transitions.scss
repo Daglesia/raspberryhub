@@ -12,7 +12,7 @@
 }
 
 .pan-leave-active:not(.clicked) {
-    transition-delay: 100ms;
+  transition-delay: 100ms;
 }
 
 .slide-enter-active,
@@ -44,8 +44,7 @@
   transition: all 1s ease;
 }
 
-.list-enter-from
-{
+.list-enter-from {
   transform: scale(0.7) translateY(3rem);
   opacity: 0;
 }
@@ -58,5 +57,5 @@
 /* ensure leaving items are taken out of layout flow so that moving
    animations can be calculated correctly. */
 .list-leave-active {
- z-index: -1;
+  z-index: -1;
 }
