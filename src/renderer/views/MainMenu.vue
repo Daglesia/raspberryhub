@@ -59,7 +59,7 @@ const paths = [
     width: 60%;
     margin: auto;
 
-    gap: 3vmax;
+    gap: 2rem;
 }
 
 svg {

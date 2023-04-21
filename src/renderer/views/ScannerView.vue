@@ -24,21 +24,17 @@ const currentCount = ref(1);
 
 const handleBackButtonClicked = ():void => {
     hidden.value = true;
+    scannedItems.value = [];
     setTimeout(()=>{
         router.back();
-    }, 700)
+    }, 1000)
 }
 
-const scannedItems = ref<ScannedItem[]>([{
-    product: "E.Leclerc Rzeszów - Hipermarket | Napoje | Cisowianka Naturalna ...",
-    src: "5902078000201",
-    count: 1,
-    id: 1,
-}]);
+const scannedItems = ref<ScannedItem[]>([]);
 
 let connection: WebSocket;
 
-let scannedItemCache = '';
+let scannedItemCache:string = '';
 
 const scanItem = (event: KeyboardEvent) => {
     const key = event.key;
@@ -97,6 +93,12 @@ onDeactivated(() => {
 .scanner-component {
     height: 33vh;
     width: 100%;
+}
+
+.scanned-item-list {
+height: 63vh;
+margin-top: 4vh;
+width: 100%;
 }
 
 </style>

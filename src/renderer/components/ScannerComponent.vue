@@ -41,23 +41,23 @@ const omitZeroDecrementIncrement = (sign: number): void => {
     align-items: center;
     justify-content: center;
 
-    border-radius: 0 0 1.5vmax 1.5vmax;
+    border-radius: 0 0 1rem 1rem;
 }
 
 h1 {
-    width: 16vmax;
+    width: 8rem;
     text-align: center;
     color: var(--color-secondary);
-    font-size: 4em;
+    font-size: 4rem;
 }
 
 
 .floating-action-button {
-    height: 12vmax;
+    height: 6rem;
 }
 
 .floating-action-button > svg {
-    height: 6.5vmax;
+    height: 3rem;
     aspect-ratio: 1 / 1;
     color: var(--color-primary);
 }
