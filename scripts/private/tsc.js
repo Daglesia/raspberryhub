@@ -9,7 +9,7 @@ function compile(directory) {
 
     tscProcess.stdout.on("data", (data) =>
       process.stdout.write(
-        Chalk.yellowBright(`[tsc] `) + Chalk.white(data.toString())
+        Chalk.yellowBright("[tsc] ") + Chalk.white(data.toString())
       )
     );
 

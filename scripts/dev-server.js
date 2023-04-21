@@ -50,13 +50,13 @@ async function startElectron() {
 
   electronProcess.stdout.on("data", (data) =>
     process.stdout.write(
-      Chalk.blueBright(`[electron] `) + Chalk.white(data.toString())
+      Chalk.blueBright("[electron] ") + Chalk.white(data.toString())
     )
   );
 
   electronProcess.stderr.on("data", (data) =>
     process.stderr.write(
-      Chalk.blueBright(`[electron] `) + Chalk.white(data.toString())
+      Chalk.blueBright("[electron] ") + Chalk.white(data.toString())
     )
   );
 
@@ -117,7 +117,7 @@ async function start() {
     cwd: path,
   }).on("change", (path) => {
     console.log(
-      Chalk.blueBright(`[electron] `) + `Change in ${path}. reloading... 🚀`
+      Chalk.blueBright("[electron] ") + `Change in ${path}. reloading... 🚀`
     );
 
     if (path.startsWith(Path.join("static", "/"))) {
