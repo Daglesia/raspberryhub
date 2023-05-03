@@ -44,7 +44,7 @@ const paths = [
   },
   {
     icon: "fa-solid fa-clock",
-    route: "/kitchen",
+    route: "/timer",
   },
 ];
 </script>

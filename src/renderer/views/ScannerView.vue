@@ -1,13 +1,17 @@
 <template>
-  <transition name="slide2" appear>
-    <div v-show="!hidden">
-      <button id="back-button" @click="handleBackButtonClicked">
-        <font-awesome-icon icon="fa-solid fa-home" />
-      </button>
-      <scanner-component v-model="currentCount" />
-      <scanned-item-list :scannedItems="scannedItems" />
-    </div>
-  </transition>
+  <div>
+    <top-overlay :hidden="hidden">
+      <template #left-button>
+        <button id="back-button" @click="handleBackButtonClicked">
+          <font-awesome-icon icon="fa-solid fa-home" />
+        </button>
+      </template>
+      <template #default>
+        <scanner-component v-model="currentCount" />
+      </template>
+    </top-overlay>
+    <scanned-item-list :scannedItems="scannedItems" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -16,6 +20,7 @@ import ScannedItemList from "../components/ScannedItemList.vue";
 import ScannerComponent from "../components/ScannerComponent.vue";
 import router from "../router";
 import { ScannedItem } from "../typings/scanner";
+import TopOverlay from "../components/TopOverlay.vue";
 
 const hidden = ref(false);
 
@@ -40,7 +45,6 @@ const scanItem = (event: KeyboardEvent) => {
   if (key !== "Enter") {
     scannedItemCache += key;
   } else {
-    console.log(scannedItemCache, "wysyłka");
     connection.send(
       JSON.stringify({
         product: scannedItemCache,
@@ -52,11 +56,9 @@ const scanItem = (event: KeyboardEvent) => {
 };
 
 onMounted(() => {
-  connection = new WebSocket("ws://127.0.0.1:8000/ws");
+  connection = new WebSocket("ws://127.0.0.1:3001");
   connection.onmessage = async function (event) {
     const data = await JSON.parse(await JSON.parse(event.data));
-    console.log(data, "beep");
-    console.log(typeof data, "notbeep");
     scannedItems.value.push({ ...data, id: Math.random() });
     if (scannedItems.value.length > 2) {
       scannedItems.value.shift();
@@ -78,10 +80,6 @@ onDeactivated(() => {
 
 #back-button {
   @extend %button-basic;
-  position: absolute;
-  top: 1vmax;
-  left: 1vmax;
-
   background-color: none;
 }
 
@@ -90,7 +88,7 @@ onDeactivated(() => {
   color: var(--color-secondary);
 }
 
-.scanner-component {
+.top-overlay {
   height: 33vh;
   width: 100%;
 }

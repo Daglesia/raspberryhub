@@ -9,6 +9,10 @@ const routes = [
     path: "/scanner",
     component: () => import("./views/ScannerView.vue"),
   },
+  {
+    path: "/timer",
+    component: () => import("./views/TimerView.vue"),
+  },
 ];
 
 const router = createRouter({

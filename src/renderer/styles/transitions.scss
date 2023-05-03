@@ -1,6 +1,6 @@
 .pan-enter-active,
 .pan-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
 }
 
 .pan-enter-from,
@@ -17,7 +17,7 @@
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
 }
 
 .slide-enter-from,
@@ -27,21 +27,57 @@
   background-color: var(--color-secondary);
 }
 
-.slide2-enter-active,
-.slide2-leave-active {
-  transition: all 1s ease;
+.slide-vertical-enter-active,
+.slide-vertical-leave-active {
+  transition: all 0.8s ease;
 }
 
-.slide2-enter-from,
-.slide2-leave-to {
-  transform: translateY(-10rem);
+.slide-vertical-enter-from,
+.slide-vertical-leave-to {
+  transform: translateY(-12rem);
   background-color: var(--color-secondary);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.8s ease;
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(6rem);
+  background-color: var(--color-secondary);
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.8s ease;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to {
+  transform: translateX(-6rem);
+  background-color: var(--color-secondary);
+  opacity: 0;
+}
+
+.slide-bottom-enter-active,
+.slide-bottom-leave-active {
+  transition: all 0.8s ease;
+}
+
+.slide-bottom-enter-from,
+.slide-bottom-leave-to {
+  transform: translateY(2rem);
+  background-color: var(--color-secondary);
+  opacity: 0;
 }
 
 .list-move, /* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {
-  transition: all 1s ease;
+  transition: all 0.8s ease;
 }
 
 .list-enter-from {
@@ -58,4 +94,14 @@
    animations can be calculated correctly. */
 .list-leave-active {
   z-index: -1;
+}
+
+.pan-simple-enter-active,
+.pan-simple-leave-active {
+  transition: all 0.3s ease;
+}
+
+.pan-simple-enter-from,
+.pan-simple-leave-to {
+  transform: scale(0);
 }

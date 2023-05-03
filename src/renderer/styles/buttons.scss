@@ -27,8 +27,22 @@
   aspect-ratio: 1 / 1;
 }
 
+.floating-action-button-secondary {
+  @extend %button-basic;
+  background: var(--color-secondary);
+  border-radius: 10rem;
+
+  aspect-ratio: 1 / 1;
+}
+
 .menu-button {
   @extend %button-basic, %button-primary;
   aspect-ratio: 80 / 39;
+  width: 100%;
+}
+
+.pill-button {
+  @extend %button-basic, %button-primary;
+  aspect-ratio: 120 / 58;
   width: 100%;
 }

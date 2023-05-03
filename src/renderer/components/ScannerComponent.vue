@@ -34,19 +34,16 @@ const omitZeroDecrementIncrement = (sign: number): void => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use "../styles/buttons.scss";
 
 .scanner-component {
   display: flex;
-
-  background-color: var(--color-primary);
+  height: 100%;
 
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
-  border-radius: 0 0 1rem 1rem;
 }
 
 h1 {
